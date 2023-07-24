@@ -287,7 +287,9 @@ mod entity_manager {
     #[doc = r" events."]
     pub mod event_data {
         use super::ethcontract;
-        #[derive(Clone, Debug, Default, Eq, PartialEq)]
+        #[derive(
+            Clone, Debug, Default, Eq, PartialEq, serde :: Serialize, serde :: Deserialize,
+        )]
         pub struct ManageEntity {
             pub user_id: self::ethcontract::U256,
             pub signer: self::ethcontract::Address,
@@ -333,7 +335,9 @@ mod entity_manager {
                 unimplemented!("events are only decoded, not encoded")
             }
         }
-        #[derive(Clone, Debug, Default, Eq, PartialEq)]
+        #[derive(
+            Clone, Debug, Default, Eq, PartialEq, serde :: Serialize, serde :: Deserialize,
+        )]
         pub struct ManageIsVerified {
             pub user_id: self::ethcontract::U256,
             pub is_verified: bool,
@@ -539,7 +543,7 @@ mod entity_manager {
         }
     }
     #[doc = r" A contract event."]
-    #[derive(Clone, Debug, Eq, PartialEq)]
+    #[derive(Clone, Debug, Eq, PartialEq, serde :: Serialize, serde :: Deserialize)]
     pub enum Event {
         ManageEntity(self::event_data::ManageEntity),
         ManageIsVerified(self::event_data::ManageIsVerified),

@@ -12,6 +12,8 @@ fn main() {
 
     ContractBuilder::new()
         .add_method_alias("initialize(string,string,uint256)", "init")
+        .add_event_derive("serde::Serialize")
+        .add_event_derive("serde::Deserialize")
         .generate(&contract)
         .unwrap()
         .write_to_file("./src/manage_entity/entity_manager.rs")
